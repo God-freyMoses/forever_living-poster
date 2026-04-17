@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitality, Bottled. | Organic Oasis Design</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-aloe: #183022;
+            --soft-ivory: #FDFBF7;
+            --cranberry: #C82033;
+            --cranberry-hover: #A01525;
+            
+            --font-headline: 'Playfair Display', serif;
+            --font-body: 'DM Sans', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #0c0c0c; /* Outer presentation bg */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: var(--font-body);
+            color: var(--soft-ivory);
+            padding: 2rem;
+        }
+
+        /* 4:5 Aspect Ratio for Instagram / Print Portrait */
+        .poster-container {
+            width: 100%;
+            max-width: 1080px;
+            aspect-ratio: 4 / 5;
+            background-color: var(--deep-aloe);
+            background-image: 
+                radial-gradient(circle at top right, rgba(253, 251, 247, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at bottom left, rgba(200, 32, 51, 0.1) 0%, transparent 60%);
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(12, 1fr);
+            padding: 5rem 4rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border-radius: 8px; /* Slight rounding for digital presentation */
+        }
+
+        /* Subtle grain texture */
+        .poster-container::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0.15;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            z-index: 10;
+        }
+
+        .header-content {
+            grid-column: 1 / 10;
+            grid-row: 1 / 4;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        h1 {
+            font-family: var(--font-headline);
+            font-size: clamp(3rem, 7vw, 6.5rem);
+            line-height: 1.05;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .subhead {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            font-weight: 400;
+            line-height: 1.4;
+            opacity: 0.9;
+            max-width: 80%;
+        }
+
+        .benefits-section {
+            grid-column: 1 / 7;
+            grid-row: 6 / 10;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+        }
+
+        .benefit-icon {
+            width: 28px;
+            height: 28px;
+            margin-top: 2px;
+            flex-shrink: 0;
+            color: var(--cranberry);
+        }
+
+        .benefit-text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .benefit-title {
+            font-family: var(--font-headline);
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .benefit-desc {
+            font-size: 1.15rem;
+            opacity: 0.75;
+            line-height: 1.5;
+        }
+
+        .cta-container {
+            grid-column: 1 / 6;
+            grid-row: 11 / 13;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+        }
+
+        .cta-button {
+            background-color: var(--cranberry);
+            color: var(--soft-ivory);
+            border: none;
+            padding: 1.25rem 3rem;
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 10px 20px rgba(200, 32, 51, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: var(--cranberry-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px rgba(200, 32, 51, 0.4);
+        }
+
+        /* The Hero Product Area */
+        .product-hero {
+            grid-column: 7 / 13;
+            grid-row: 4 / 13;
+            z-index: 4;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Stylized Image Frame to house the non-transparent product shot elegantly */
+        .product-image-container {
+            border-radius: 200px 200px 20px 20px; /* Elegant architectural arch */
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 0 0 2px rgba(253, 251, 247, 0.15);
+            position: absolute; /* allow overlapping */
+            background-color: var(--soft-ivory); /* fallback */
+        }
+        
+        .main-image {
+            width: 85%;
+            aspect-ratio: 1 / 1;
+            transform: translateY(-5%) rotate(-2deg);
+            z-index: 2;
+        }
+
+        .sub-image {
+            width: 45%;
+            aspect-ratio: 1 / 1;
+            border-radius: 20px; /* softer square for sub images */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), inset 0 0 0 2px rgba(253, 251, 247, 0.2);
+            z-index: 3;
+            border: 4px solid var(--deep-aloe); /* creates a nice separation gap */
+        }
+
+        .sub-1 {
+            bottom: 5%;
+            left: -10%;
+            transform: rotate(-6deg);
+        }
+
+        .sub-2 {
+            bottom: 15%;
+            right: -5%;
+            transform: rotate(4deg);
+            width: 35%; /* slightly smaller to add scale variety */
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-image-container:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        /* Decorative Elements */
+        .deco-line {
+            position: absolute;
+            top: 5rem;
+            right: 4rem;
+            width: 60px;
+            height: 2px;
+            background-color: var(--cranberry);
+            z-index: 5;
+        }
+
+        /* Responsive behavior */
+        @media (max-width: 768px) {
+            .poster-container {
+                aspect-ratio: auto;
+                height: auto;
+                min-height: 100vh;
+                border-radius: 0;
+                padding: 3rem 2rem;
+                display: flex;
+                flex-direction: column;
+            }
+            .header-content, .benefits-section, .cta-container, .product-hero {
+                position: relative;
+                grid-column: auto;
+                grid-row: auto;
+            }
+            .product-hero {
+                height: 500px;
+                margin-top: 2rem;
+                margin-bottom: 2rem;
+                position: relative;
+            }
+            .product-image-container {
+                /* reset if needed, but absolute is fine inside the fixed-height hero */
+            }
+            .main-image {
+                width: 80%;
+            }
+            .deco-line {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="poster-container">
+        <!-- Subtle background texture using the original image file provided -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.03; background-image: url('1000246962.jpg'); background-size: cover; background-position: center; mix-blend-mode: screen; z-index: 1;"></div>
+        
+        <div class="deco-line"></div>
+
+        <div class="header-content">
+            <h1>Vitality,<br>Bottled.</h1>
+            <p class="subhead">The pure power of Aloe Vera, amplified by nature’s finest cranberries and apples.</p>
+        </div>
+
+        <div class="benefits-section">
+            
+            <!-- Benefit 1 -->
+            <div class="benefit-item">
+                <svg class="benefit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <div class="benefit-text">
+                    <div class="benefit-title">Digestive Harmony</div>
+                    <div class="benefit-desc">Supports a healthy gut biome naturally.</div>
+                </div>
+            </div>
+
+            <!-- Benefit 2 -->
+            <div class="benefit-item">
+                <svg class="benefit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                <div class="benefit-text">
+                    <div class="benefit-title">Natural Immunity</div>
+                    <div class="benefit-desc">Rich in antioxidants and Vitamin C.</div>
+                </div>
+            </div>
+
+            <!-- Benefit 3 -->
+            <div class="benefit-item">
+                <svg class="benefit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                <div class="benefit-text">
+                    <div class="benefit-title">Daily Balance</div>
+                    <div class="benefit-desc">Sustained, vibrant energy without the crash.</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="product-hero">
+            <div class="product-image-container main-image">
+                <img src="forever living, aloe vera/71wBPTSTErL._AC_SL1500_.jpg" alt="Forever Aloe Berry Nectar Product Shot with Certifications" class="product-image">
+            </div>
+            <div class="product-image-container sub-image sub-1">
+                <img src="forever living, aloe vera/8952c91e75aa70e69109ab339277dad4b08bc2f6.jpeg" alt="Aloe Berry Nectar Poured in Glass with Fresh Ingredients" class="product-image">
+            </div>
+            <div class="product-image-container sub-image sub-2">
+                <img src="forever living, aloe vera/71Z2nZgJFTL._AC_SL1500_.jpg" alt="Aloe Berry Nectar Angle 3" class="product-image">
+            </div>
+        </div>
+
+        <div class="cta-container">
+            <button class="cta-button">Fuel Your Day. Shop Now.</button>
+        </div>
+    </div>
+
+</body>
+</html>
